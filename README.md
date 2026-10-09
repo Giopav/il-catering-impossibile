@@ -43,7 +43,7 @@ In SAT terms: each employee is a **clause** (an OR of literals), each request is
 | All satisfiable | `OK` |
 | *k* removals needed | `KO`, then `-1`, `-2`, …, `-k`, then `OK` |
 
-### Example 3
+### Example A
 
 ```
 a b c d
@@ -55,7 +55,7 @@ b -b          ← C3: tautology
 
 Output: `KO`, `-1`, `-2`, `OK` → the longest satisfiable prefix is {C0, C1}: the last 2 must be removed.
 
-### Example 4
+### Example B
 
 ```
 a b c d
@@ -76,7 +76,7 @@ Same command as the official evaluator:
 
 ```bash
 gcc -DEVAL -std=gnu11 -Wall -Werror -O2 -pipe -static -s -o catering main.c -lm
-./catering < example3.txt
+./catering < example-a.txt
 ```
 
 ---
@@ -252,7 +252,7 @@ Why start from the top: if *k* removals are needed, **O(log k)** solver calls ar
 
 Finally it prints `KO`, then `-1 … -(n − basso)`, then `OK`.
 
-### Trace on Example 3 (n = 4)
+### Trace on Example A (n = 4)
 
 | Call | Prefix | Result | State |
 |---|---|---|---|
@@ -290,6 +290,6 @@ Memory: O(n + m + L), where m = number of employees.
 
 ## 10. Testing
 
-- Output identical to `example3.output.txt` and `example4.output.txt`.
+- Output identical to `example-a.output.txt` and `example-b.output.txt`.
 - Compiles with no warnings under `-Wall -Werror`.
 - Cross-checked against a **brute-force** solver (all 2ⁿ assignments) on 400 random instances (up to 6 dishes and 12 employees, including duplicates, tautologies, empty lines and unknown dishes): no differences.
